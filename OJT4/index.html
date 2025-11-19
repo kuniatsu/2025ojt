@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>情報登録</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>情報登録</h1>
+      <p>あなたの情報を詳細に把握するフォームです</p>
+    </header>
+    <main>
+      <section id="identity">
+        <h2><span>1</span>基本プロフィール</h2>
+        <div class="grid">
+          <div class="floating-label">
+            <span>フルネーム</span>
+            <input type="text" placeholder="例: 山田 太郎" />
+          </div>
+          <div>
+            <label>生年月日</label>
+            <input type="date" />
+          </div>
+          <div>
+            <label>性別</label>
+            <div class="chips">
+              <label><input type="radio" name="gender" /><span>男性</span></label>
+              <label><input type="radio" name="gender" /><span>女性</span></label>
+              <label><input type="radio" name="gender" /><span>ノンバイナリ</span></label>
+              <label><input type="radio" name="gender" /><span>回答しない</span></label>
+            </div>
+          </div>
+          <div>
+            <label>現住所</label>
+            <input type="text" placeholder="都道府県・市区町村・番地" />
+          </div>
+          <div class="grid two">
+            <div>
+              <label>電話番号</label>
+              <input type="tel" pattern="[0-9]*" inputmode="numeric" placeholder="09012345678" />
+            </div>
+            <div>
+              <label>メールアドレス</label>
+              <input type="email" placeholder="you@example.com" />
+            </div>
+          </div>
+          <div class="inline">
+            <label>現在地共有</label>
+            <div class="toggle" id="locationToggle"></div>
+            <small class="muted">位置情報をとこまで共有しますか？</small>
+          </div>
+          <div>
+            <label>ざっくり自己紹介</label>
+            <textarea placeholder="自分を一言で表すと？どんな人物か要約してください。"></textarea>
+          </div>
+        </div>
+      </section>
+
+      <section id="history">
+        <h2><span>2</span>経歴とルーツ</h2>
+        <div class="grid">
+          <div class="grid two">
+            <div>
+              <label>最終学歴</label>
+              <select>
+                <option>選択してください</option>
+                <option>高校卒業</option>
+                <option>専門/短大卒</option>
+                <option>大学卒</option>
+                <option>大学院卒</option>
+                <option>その他</option>
+              </select>
+            </div>
+            <div>
+              <label>専攻分野</label>
+              <input type="text" placeholder="情報科学 / 経営学 など" />
+            </div>
+          </div>
+          <div>
+            <label>在学中の活動・研究</label>
+            <textarea placeholder="研究テーマ、部活、プロジェクトなどを詳しく"></textarea>
+          </div>
+          <div class="grid two">
+            <div>
+              <label>現在の勤務先</label>
+              <input type="text" placeholder="会社名" />
+            </div>
+            <div>
+              <label>役職 / 担当</label>
+              <input type="text" placeholder="職種やタイトル" />
+            </div>
+          </div>
+          <div>
+            <label>職務経歴ハイライト</label>
+            <textarea placeholder="携わったプロジェクト、成果、挑戦したことなど"></textarea>
+          </div>
+          <div class="grid two">
+            <div>
+              <label>勤務開始日</label>
+              <input type="date" />
+            </div>
+            <div>
+              <label>勤務時間帯</label>
+              <input type="time" />
+            </div>
+          </div>
+          <div>
+            <label>過去の所在地遍歴</label>
+            <textarea placeholder="幼少期〜現在まで居住した場所を年代順に"></textarea>
+          </div>
+          <div class="range-group">
+            <label style="flex: 1">仕事満足度</label>
+            <input type="range" min="0" max="100" value="55" id="jobRange" />
+            <output id="jobRangeValue">55</output>
+          </div>
+        </div>
+      </section>
+
+      <section id="family">
+        <h2><span>3</span>家族と関係性</h2>
+        <div class="grid">
+          <div class="grid two">
+            <div>
+              <label>家族構成</label>
+              <select>
+                <option>選択してください</option>
+                <option>一人暮らし</option>
+                <option>配偶者あり</option>
+                <option>子どもあり</option>
+                <option>三世代同居</option>
+                <option>その他</option>
+              </select>
+            </div>
+            <div>
+              <label>扶養している人数</label>
+              <input type="number" min="0" max="20" />
+            </div>
+          </div>
+          <div>
+            <label>家族との関係性</label>
+            <textarea placeholder="それぞれとの距離感やエピソードなど"></textarea>
+          </div>
+          <div class="grid two">
+            <div>
+              <label>緊急連絡先</label>
+              <input type="tel" pattern="[0-9]*" inputmode="numeric" placeholder="0312345678" />
+            </div>
+            <div>
+              <label>緊急連絡先との続柄</label>
+              <input type="text" placeholder="父 / 姉 / 友人 など" />
+            </div>
+          </div>
+          <div>
+            <label>家庭で大切にしている価値観</label>
+            <div class="chips">
+              <label><input type="checkbox" /><span>安心</span></label>
+              <label><input type="checkbox" /><span>冒険</span></label>
+              <label><input type="checkbox" /><span>規律</span></label>
+              <label><input type="checkbox" /><span>自由</span></label>
+              <label><input type="checkbox" /><span>伝統</span></label>
+              <label><input type="checkbox" /><span>成長</span></label>
+            </div>
+          </div>
+          <div class="range-group">
+            <label style="flex: 1">家族へのオープン度</label>
+            <input type="range" min="0" max="100" value="45" id="familyRange" />
+            <output id="familyRangeValue">45</output>
+          </div>
+          <div class="inline">
+            <label>家庭内でのリーダーは？</label>
+            <select style="max-width: 220px">
+              <option>自分</option>
+              <option>パートナー</option>
+              <option>子ども</option>
+              <option>ペット</option>
+              <option>誰も決めない</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <section id="psyche">
+        <h2><span>4</span>心理・価値観</h2>
+        <div class="grid">
+          <div>
+            <label>最近よく考えること</label>
+            <textarea placeholder="頭から離れないアイデアや悩み"></textarea>
+          </div>
+          <div>
+            <label>心の支えになっているもの</label>
+            <input type="text" placeholder="音楽 / 人物 / 哲学など" />
+          </div>
+          <div>
+            <label>ストレス発散方法</label>
+            <textarea placeholder="儀式、習慣、こだわりなどを具体的に"></textarea>
+          </div>
+          <div>
+            <label>現在の心理モード</label>
+            <div class="chips">
+              <label><input type="radio" name="mood" /><span>戦闘モード</span></label>
+              <label><input type="radio" name="mood" /><span>探求モード</span></label>
+              <label><input type="radio" name="mood" /><span>癒やしモード</span></label>
+              <label><input type="radio" name="mood" /><span>逃避モード</span></label>
+              <label><input type="radio" name="mood" /><span>空白モード</span></label>
+            </div>
+          </div>
+          <div class="range-group">
+            <label style="flex: 1">内向性 ↔ 外向性</label>
+            <input type="range" min="0" max="100" value="30" id="introRange" />
+            <output id="introRangeValue">30</output>
+          </div>
+          <div class="range-group">
+            <label style="flex: 1">感情の波の振れ幅</label>
+            <input type="range" min="0" max="100" value="70" id="emotionRange" />
+            <output id="emotionRangeValue">70</output>
+          </div>
+          <div class="grid two">
+            <div>
+              <label>直近に見た夢</label>
+              <textarea placeholder="覚えている限り詳細に書いてください"></textarea>
+            </div>
+            <div>
+              <label>最大の恐怖</label>
+              <textarea placeholder="なぜそれが怖いのかも含めて説明してください"></textarea>
+            </div>
+          </div>
+          <div>
+            <label>倫理観を試された経験</label>
+            <textarea placeholder="具体的な状況と葛藤、行動、結果を教えてください"></textarea>
+          </div>
+        </div>
+      </section>
+
+      <section id="lifestyle">
+        <h2><span>5</span>日常と未来設計</h2>
+        <div class="grid">
+          <div class="grid two">
+            <div>
+              <label>平日の起床時間</label>
+              <input type="time" />
+            </div>
+            <div>
+              <label>休日の起床時間</label>
+              <input type="time" />
+            </div>
+          </div>
+          <div class="grid two">
+            <div>
+              <label>一日の水分摂取量（ml）</label>
+              <input type="number" min="0" max="10000" />
+            </div>
+            <div>
+              <label>スマホスクリーンタイム（時間）</label>
+              <input type="number" min="0" max="24" />
+            </div>
+          </div>
+          <div>
+            <label>日課トグル</label>
+            <div class="inline">
+              <div class="toggle" data-toggle-text="朝瞑想"></div>
+              <div class="toggle" data-toggle-text="夜ヨガ"></div>
+              <div class="toggle" data-toggle-text="SNS断ち"></div>
+              <div class="toggle" data-toggle-text="カフェ巡り"></div>
+            </div>
+          </div>
+          <div class="grid two">
+            <div>
+              <label>理想の住環境</label>
+              <select>
+                <option>選択してください</option>
+                <option>都市の高層マンション</option>
+                <option>郊外の戸建て</option>
+                <option>海辺のコテージ</option>
+                <option>山奥のログハウス</option>
+                <option>ノマド生活</option>
+              </select>
+            </div>
+            <div>
+              <label>今後5年で実現したいこと</label>
+              <input type="text" placeholder="具体的なゴールを一言で" />
+            </div>
+          </div>
+          <div>
+            <label>生活のこだわり</label>
+            <textarea placeholder="インテリア、食生活、習慣などの細かなこだわりを全部書いてください"></textarea>
+          </div>
+          <div>
+            <label>未来の自分へのメッセージ</label>
+            <textarea placeholder="5年後のあなたへ伝えたいこと"></textarea>
+          </div>
+          <div class="range-group">
+            <label style="flex: 1">生活満足度</label>
+            <input type="range" min="0" max="100" value="50" id="lifeRange" />
+            <output id="lifeRangeValue">50</output>
+          </div>
+          <div>
+            <label>タスク計画（時間指定）</label>
+            <input type="time" />
+          </div>
+        </div>
+      </section>
+      <div class="huge-spacer"></div>
+    </main>
+    <script src="./app.js" defer></script>
+  </body>
+</html>

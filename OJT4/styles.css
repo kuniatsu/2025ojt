@@ -1,0 +1,209 @@
+:root {
+  color-scheme: light dark;
+  --base-bg: radial-gradient(circle at top, #f6f8ff, #edf1ff 35%, #dfe7ff 70%, #e9efff);
+  --card-bg: rgba(255, 255, 255, 0.82);
+  --text: #111322;
+  --muted: #5b6078;
+  --accent: #5865f2;
+  --accent-2: #c084fc;
+  --border: rgba(15, 23, 42, 0.12);
+  --glass: rgba(255, 255, 255, 0.35);
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: 'Inter', 'Noto Sans JP', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--base-bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+header {
+  position: sticky;
+  top: 0;
+  backdrop-filter: blur(20px);
+  background: rgba(246, 248, 255, 0.85);
+  padding: 1.6rem clamp(1.5rem, 5vw, 3rem);
+  border-bottom: 1px solid var(--border);
+  z-index: 20;
+}
+header h1 {
+  margin: 0 0 0.3rem;
+  font-size: clamp(1.6rem, 4vw, 2.5rem);
+  letter-spacing: 0.02em;
+}
+header p {
+  margin: 0;
+  color: var(--muted);
+}
+main {
+  padding: clamp(1.5rem, 4vw, 3.5rem);
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+section {
+  background: var(--card-bg);
+  border-radius: 1.6rem;
+  padding: clamp(1.5rem, 3vw, 2.75rem);
+  border: 1px solid var(--border);
+  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 1.6rem;
+  pointer-events: none;
+  box-shadow: inset 0 0 0 1px rgba(88, 101, 242, 0.08);
+}
+section h2 {
+  margin-top: 0;
+  font-size: clamp(1.3rem, 3vw, 2rem);
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+section h2 span {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-weight: 600;
+  font-size: 1.3rem;
+}
+.grid {
+  display: grid;
+  gap: 1.4rem;
+}
+.grid.two {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+input,
+textarea,
+select {
+  width: 100%;
+  border-radius: 0.9rem;
+  border: 1px solid var(--border);
+  padding: 0.85rem 1rem;
+  font-size: 1rem;
+  font-family: inherit;
+  background: rgba(255, 255, 255, 0.9);
+  transition: border 0.2s, box-shadow 0.2s;
+}
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(88, 101, 242, 0.15);
+}
+textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+.inline {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  font-size: 0.9rem;
+}
+.toggle {
+  width: 56px;
+  height: 30px;
+  border-radius: 30px;
+  background: rgba(15, 23, 42, 0.15);
+  position: relative;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.toggle::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.25);
+  transition: transform 0.25s;
+}
+.toggle.active {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+}
+.toggle.active::after {
+  transform: translateX(26px);
+}
+.range-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.range-group output {
+  min-width: 48px;
+  text-align: center;
+  font-weight: 700;
+  color: var(--accent);
+}
+.floating-label {
+  position: relative;
+}
+.floating-label input {
+  padding-top: 1.4rem;
+}
+.floating-label span {
+  position: absolute;
+  left: 1rem;
+  top: 0.6rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.chips {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+.chips label {
+  margin: 0;
+  padding: 0.45rem 1rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: border 0.2s, background 0.2s;
+}
+.chips input {
+  display: none;
+}
+.chips input:checked + span {
+  border-color: var(--accent);
+  background: rgba(88, 101, 242, 0.15);
+}
+.huge-spacer {
+  height: 1200px;
+  pointer-events: none;
+}
+
