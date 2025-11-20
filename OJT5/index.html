@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>OJT5 Mini Playground</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main>
+      <section>
+        <h1>定番 JavaScript デモ</h1>
+        <p>操作して基礎的な DOM 操作・イベント処理を体感しましょう。</p>
+      </section>
+      <section class="card">
+        <h2>1. カウンター</h2>
+        <div class="counter">
+          <button data-action="decrement">−</button>
+          <output id="count">0</output>
+          <button data-action="increment">＋</button>
+        </div>
+      </section>
+      <section class="card">
+        <h2>2. メモ追加</h2>
+        <form id="memoForm">
+          <input type="text" id="memoInput" placeholder="メモを入力" required />
+          <button type="submit">追加</button>
+        </form>
+        <ul id="memoList"></ul>
+      </section>
+      <section class="card">
+        <h2>3. フィルター</h2>
+        <label>
+          <span>キーワード検索</span>
+          <input type="search" id="filterInput" placeholder="例: js" />
+        </label>
+        <ul class="items">
+          <li data-label="html">HTML</li>
+          <li data-label="css">CSS</li>
+          <li data-label="javascript">JavaScript</li>
+          <li data-label="typescript">TypeScript</li>
+        </ul>
+      </section>
+    </main>
+    <script src="./app.js" defer></script>
+  </body>
+</html>
+
