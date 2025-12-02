@@ -120,6 +120,208 @@ body, html {
   position: relative;
   bottom: 20px;
 }
+
+/* カスタムスライダーのスタイル */
+.custom-slider-container {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+  background: #f5f5f5;
+  border-radius: 8px;
+}
+
+.slider-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.6s ease-in-out;
+  pointer-events: none;
+}
+
+.slide.active {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 1;
+}
+
+.slide-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide-content img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slide-text {
+  position: absolute;
+  bottom: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  z-index: 2;
+}
+
+.slide-text h2 {
+  font-size: 2.5rem;
+  margin: 0 0 10px 0;
+  font-weight: 700;
+}
+
+.slide-text p {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+/* アローボタン */
+.slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.slider-arrow:hover {
+  background: white;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.slider-arrow.prev {
+  left: 20px;
+}
+
+.slider-arrow.next {
+  right: 20px;
+}
+
+.slider-arrow svg {
+  width: 24px;
+  height: 24px;
+  fill: #115489;
+}
+
+/* ドットナビゲーション */
+.slider-dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+  z-index: 10;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  border: 2px solid white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.dot:hover {
+  background: rgba(255, 255, 255, 0.8);
+  transform: scale(1.2);
+}
+
+.dot.active {
+  background: white;
+  transform: scale(1.3);
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .custom-slider-container {
+    height: 350px;
+  }
+
+  .slide-text h2 {
+    font-size: 1.8rem;
+  }
+
+  .slide-text p {
+    font-size: 1rem;
+  }
+
+  .slider-arrow {
+    width: 40px;
+    height: 40px;
+  }
+
+  .slider-arrow.prev {
+    left: 10px;
+  }
+
+  .slider-arrow.next {
+    right: 10px;
+  }
+
+  .slider-arrow svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .custom-slider-container {
+    height: 250px;
+  }
+
+  .slide-text h2 {
+    font-size: 1.4rem;
+  }
+
+  .slide-text p {
+    font-size: 0.9rem;
+  }
+
+  .slider-arrow {
+    width: 35px;
+    height: 35px;
+  }
+
+  .slider-arrow svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+  }
+}
 </style>
 <link rel=stylesheet id=photoswipe-default-skin-css href=stylesheet_6.css type=text/css>
 <link data-minify=1 rel=stylesheet id=elementor-gf-local-montserrat-css href=stylesheet_5.css type=text/css>
@@ -295,12 +497,56 @@ window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(argumen
  <div class="elementor-container elementor-column-gap-default">
  <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-22ef607e" data-id=22ef607e data-element_type=column>
  <div class="elementor-widget-wrap elementor-element-populated">
- <div class="elementor-element elementor-element-5d478862 farmart--h-position-center farmart--v-position-middle elementor-widget elementor-widget-farmart-slides" data-id=5d478862 data-element_type=widget data-widget_type=farmart-slides.default>
- <div class=elementor-widget-container>
- <div class="farmart-slides-wrapper align-icon- navigation-arrows navigation-tablet-arrows navigation-mobile-arrows farmart-arrow-bottom" dir=ltr>
- <div class=arrows-wrapper><div class="arrows-inner arrows-container-fluid"><span class="slick-prev-arrow farmart-svg-icon slick-arrow"><svg viewBox="0 0 32 32"><path d="M22.4 32c0.205 0 0.409-0.078 0.566-0.234 0.312-0.312 0.312-0.819 0-1.131l-13.834-13.834 13.834-13.834c0.312-0.312 0.312-0.819 0-1.131s-0.819-0.312-1.131 0l-14.4 14.4c-0.312 0.312-0.312 0.819 0 1.131l14.4 14.4c0.156 0.156 0.361 0.234 0.566 0.234z"></path></svg></span><span class="slick-next-arrow farmart-svg-icon slick-arrow"><svg viewBox="0 0 32 32"><path d="M8 32c-0.205 0-0.409-0.078-0.566-0.234-0.312-0.312-0.312-0.819 0-1.131l13.834-13.834-13.834-13.834c-0.312-0.312-0.312-0.819 0-1.131s0.819-0.312 1.131 0l14.4 14.4c0.312 0.312 0.312 0.819 0 1.131l-14.4 14.4c-0.156 0.156-0.361 0.234-0.566 0.234z"></path></svg></span></div></div>
- <div class="farmart-slides slick-initialized slick-slider slick-dotted" data-slider_options='{"slidesToShow":1,"autoplaySpeed":0,"autoplay":true,"infinite":true,"pauseOnHover":true,"speed":500,"arrows":true,"dots":true,"rtl":false,"fade":true}'><div class="slick-list draggable"><div class=slick-track style=opacity:1;width:3282px><div class="elementor-repeater-item-82a5b00 item-slider slick-slide" data-slick-index=0 aria-hidden=true style="width:1094px;position:relative;left:0px;top:0px;z-index:998;opacity:0;transition:opacity 500ms linear" tabindex=0 role=tabpanel id=slick-slide00 aria-describedby=slick-slide-control00><div class=slick-slide-bg></div><div class=slick-slide-inner><div class=farmart-slide-content></div></div></div><div class="elementor-repeater-item-f4a806e item-slider slick-slide slick-current slick-active" data-slick-index=1 aria-hidden=false style="width:1094px;position:relative;left:-1094px;top:0px;z-index:1000;opacity:1;transition:opacity 500ms linear" tabindex=-1 role=tabpanel id=slick-slide01 aria-describedby=slick-slide-control01><div class=slick-slide-bg></div><a href=https://suadalat.com/thuong-hieu/da-lat-true-milk/ class=slick-slide-inner tabindex=-1><div class=farmart-slide-content></div></a></div><div class="elementor-repeater-item-6273942 item-slider slick-slide" data-slick-index=2 aria-hidden=true style="width:1094px;position:relative;left:-2188px;top:0px;z-index:998;opacity:0;transition:opacity 500ms linear" tabindex=-1 role=tabpanel id=slick-slide02 aria-describedby=slick-slide-control02><div class=slick-slide-bg></div><a href=https://suadalat.com/thuong-hieu/dalatte/ class=slick-slide-inner tabindex=-1><div class=farmart-slide-content></div></a></div></div></div><ul class="slick-dots sf-hidden" style=display:block role=tablist></ul></div>
- </div> </div>
+ <!-- カスタムスライダー -->
+ <div id="custom-slider" class="custom-slider-container">
+   <div class="slider-wrapper">
+     <div class="slide active" data-index="0">
+       <div class="slide-content">
+         <img src="images/slide1.jpg" alt="Slide 1" onerror="this.style.background='linear-gradient(135deg, #667eea 0%, #764ba2 100%)'">
+         <div class="slide-text">
+           <h2>ダラットミルク</h2>
+           <p>高地産の新鮮なミルク</p>
+         </div>
+       </div>
+     </div>
+     <div class="slide" data-index="1">
+       <div class="slide-content">
+         <a href="https://suadalat.com/thuong-hieu/da-lat-true-milk/" style="display: block; width: 100%; height: 100%;">
+           <img src="images/slide2.jpg" alt="Đà Lạt True Milk" onerror="this.style.background='linear-gradient(135deg, #f093fb 0%, #f5576c 100%)'">
+           <div class="slide-text">
+             <h2>Đà Lạt True Milk</h2>
+             <p>高品質な牛乳製品</p>
+           </div>
+         </a>
+       </div>
+     </div>
+     <div class="slide" data-index="2">
+       <div class="slide-content">
+         <a href="https://suadalat.com/thuong-hieu/dalatte/" style="display: block; width: 100%; height: 100%;">
+           <img src="images/slide3.jpg" alt="Dalatte" onerror="this.style.background='linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)'">
+           <div class="slide-text">
+             <h2>Dalatte</h2>
+             <p>美味しいラテドリンク</p>
+           </div>
+         </a>
+       </div>
+     </div>
+   </div>
+
+   <!-- ナビゲーションアロー -->
+   <button class="slider-arrow prev" aria-label="前のスライド">
+     <svg viewBox="0 0 32 32"><path d="M22.4 32c0.205 0 0.409-0.078 0.566-0.234 0.312-0.312 0.312-0.819 0-1.131l-13.834-13.834 13.834-13.834c0.312-0.312 0.312-0.819 0-1.131s-0.819-0.312-1.131 0l-14.4 14.4c-0.312 0.312-0.312 0.819 0 1.131l14.4 14.4c0.156 0.156 0.361 0.234 0.566 0.234z"></path></svg>
+   </button>
+   <button class="slider-arrow next" aria-label="次のスライド">
+     <svg viewBox="0 0 32 32"><path d="M8 32c-0.205 0-0.409-0.078-0.566-0.234-0.312-0.312-0.312-0.819 0-1.131l13.834-13.834-13.834-13.834c-0.312-0.312-0.312-0.819 0-1.131s0.819-0.312 1.131 0l14.4 14.4c0.312 0.312 0.312 0.819 0 1.131l-14.4 14.4c-0.156 0.156-0.361 0.234-0.566 0.234z"></path></svg>
+   </button>
+
+   <!-- ドットナビゲーション -->
+   <div class="slider-dots">
+     <button class="dot active" data-slide="0" aria-label="スライド1へ移動"></button>
+     <button class="dot" data-slide="1" aria-label="スライド2へ移動"></button>
+     <button class="dot" data-slide="2" aria-label="スライド3へ移動"></button>
+   </div>
  </div>
  </div>
  </div>
@@ -609,67 +855,162 @@ var isures_sdc_vars = {"url_ajax":"https:\/\/suadalat.com\/wp-admin\/admin-ajax.
  
  
 <script src=data:text/javascript;base64,CmlmKCAvQW5kcm9pZHx3ZWJPU3xpUGhvbmV8aVBhZHxpUG9kfEJsYWNrQmVycnl8SUVNb2JpbGV8T3BlcmEgTWluaS9pLnRlc3QobmF2aWdhdG9yLnVzZXJBZ2VudCkgKQp7ZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoImxpbmt6YWxvIikuaHJlZj0iaHR0cHM6Ly96YWxvLm1lLzA5MDE3Nzg3NzUiO30K data-rocket-status=executed></script>
+
+<!-- カスタムスライダー JavaScript -->
 <script>
-// スライダーの再初期化スクリプト
 (function() {
-  function initSlider() {
-    // jQueryとslickが読み込まれるまで待機
-    if (typeof jQuery === 'undefined' || typeof jQuery.fn.slick === 'undefined') {
-      setTimeout(initSlider, 100);
-      return;
+  'use strict';
+
+  // DOMが読み込まれたら実行
+  function initCustomSlider() {
+    const slider = document.getElementById('custom-slider');
+    if (!slider) return;
+
+    const slides = slider.querySelectorAll('.slide');
+    const dots = slider.querySelectorAll('.dot');
+    const prevBtn = slider.querySelector('.slider-arrow.prev');
+    const nextBtn = slider.querySelector('.slider-arrow.next');
+
+    let currentIndex = 0;
+    let autoSlideInterval = null;
+
+    // スライドを表示
+    function showSlide(index) {
+      // インデックスの範囲チェック
+      if (index < 0) {
+        currentIndex = slides.length - 1;
+      } else if (index >= slides.length) {
+        currentIndex = 0;
+      } else {
+        currentIndex = index;
+      }
+
+      // すべてのスライドとドットから active クラスを削除
+      slides.forEach(slide => slide.classList.remove('active'));
+      dots.forEach(dot => dot.classList.remove('active'));
+
+      // 現在のスライドとドットに active クラスを追加
+      slides[currentIndex].classList.add('active');
+      dots[currentIndex].classList.add('active');
     }
 
-    jQuery(document).ready(function($) {
-      // 既存のスライダーを破棄して再初期化
-      var $slider = $('.farmart-slides');
+    // 次のスライドへ
+    function nextSlide() {
+      showSlide(currentIndex + 1);
+    }
 
-      if ($slider.length > 0 && $slider.hasClass('slick-initialized')) {
-        // 既存のスライダーを破棄
-        $slider.slick('unslick');
+    // 前のスライドへ
+    function prevSlide() {
+      showSlide(currentIndex - 1);
+    }
+
+    // 自動スライド開始
+    function startAutoSlide() {
+      stopAutoSlide();
+      autoSlideInterval = setInterval(nextSlide, 4000); // 4秒ごと
+    }
+
+    // 自動スライド停止
+    function stopAutoSlide() {
+      if (autoSlideInterval) {
+        clearInterval(autoSlideInterval);
+        autoSlideInterval = null;
       }
+    }
 
-      // スライダーを再初期化
-      if ($slider.length > 0) {
-        var options = $slider.data('slider_options') || {
-          slidesToShow: 1,
-          autoplaySpeed: 3000,
-          autoplay: true,
-          infinite: true,
-          pauseOnHover: true,
-          speed: 500,
-          arrows: true,
-          dots: true,
-          rtl: false,
-          fade: true,
-          adaptiveHeight: true
-        };
+    // イベントリスナー設定
+    if (nextBtn) {
+      nextBtn.addEventListener('click', function() {
+        nextSlide();
+        stopAutoSlide();
+        setTimeout(startAutoSlide, 5000); // 5秒後に自動再生再開
+      });
+    }
 
-        $slider.slick(options);
+    if (prevBtn) {
+      prevBtn.addEventListener('click', function() {
+        prevSlide();
+        stopAutoSlide();
+        setTimeout(startAutoSlide, 5000);
+      });
+    }
 
-        // ウィンドウリサイズ時に再初期化
-        var resizeTimer;
-        $(window).on('resize', function() {
-          clearTimeout(resizeTimer);
-          resizeTimer = setTimeout(function() {
-            if ($slider.hasClass('slick-initialized')) {
-              $slider.slick('setPosition');
-            }
-          }, 250);
-        });
+    // ドットクリックイベント
+    dots.forEach(function(dot, index) {
+      dot.addEventListener('click', function() {
+        showSlide(index);
+        stopAutoSlide();
+        setTimeout(startAutoSlide, 5000);
+      });
+    });
+
+    // マウスホバーで一時停止
+    slider.addEventListener('mouseenter', stopAutoSlide);
+    slider.addEventListener('mouseleave', startAutoSlide);
+
+    // タッチスワイプ対応
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    slider.addEventListener('touchstart', function(e) {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    slider.addEventListener('touchend', function(e) {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    }, { passive: true });
+
+    function handleSwipe() {
+      const swipeThreshold = 50;
+      const diff = touchStartX - touchEndX;
+
+      if (Math.abs(diff) > swipeThreshold) {
+        if (diff > 0) {
+          // 左スワイプ（次へ）
+          nextSlide();
+        } else {
+          // 右スワイプ（前へ）
+          prevSlide();
+        }
+        stopAutoSlide();
+        setTimeout(startAutoSlide, 5000);
+      }
+    }
+
+    // キーボードナビゲーション
+    document.addEventListener('keydown', function(e) {
+      if (!slider.matches(':hover')) return;
+
+      if (e.key === 'ArrowLeft') {
+        prevSlide();
+        stopAutoSlide();
+        setTimeout(startAutoSlide, 5000);
+      } else if (e.key === 'ArrowRight') {
+        nextSlide();
+        stopAutoSlide();
+        setTimeout(startAutoSlide, 5000);
       }
     });
+
+    // 初期化
+    showSlide(0);
+    startAutoSlide();
   }
 
-  // ページ読み込み後に実行
+  // DOMContentLoaded イベントで初期化
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initSlider);
+    document.addEventListener('DOMContentLoaded', initCustomSlider);
   } else {
-    initSlider();
+    initCustomSlider();
   }
 
   // Rocket LazyLoad対応
-  window.addEventListener('rocket-allScriptsLoaded', initSlider);
+  if (typeof window !== 'undefined') {
+    window.addEventListener('rocket-allScriptsLoaded', initCustomSlider);
+  }
 })();
 </script>
+
 <script>class RocketElementorAnimation{constructor(){this.deviceMode=document.createElement("span"),this.deviceMode.id="elementor-device-mode-wpr",this.deviceMode.setAttribute("class","elementor-screen-only"),document.body.appendChild(this.deviceMode)}_detectAnimations(){let t=getComputedStyle(this.deviceMode,":after").content.replace(/"/g,"");this.animationSettingKeys=this._listAnimationSettingsKeys(t),document.querySelectorAll(".elementor-invisible[data-settings]").forEach(t=>{const e=t.getBoundingClientRect();if(e.bottom>=0&&e.top<=window.innerHeight)try{this._animateElement(t)}catch(t){}})}_animateElement(t){const e=JSON.parse(t.dataset.settings),i=e._animation_delay||e.animation_delay||0,n=e[this.animationSettingKeys.find(t=>e[t])];if("none"===n)return void t.classList.remove("elementor-invisible");t.classList.remove(n),this.currentAnimation&&t.classList.remove(this.currentAnimation),this.currentAnimation=n;let s=setTimeout(()=>{t.classList.remove("elementor-invisible"),t.classList.add("animated",n),this._removeAnimationSettings(t,e)},i);window.addEventListener("rocket-startLoading",function(){clearTimeout(s)})}_listAnimationSettingsKeys(t="mobile"){const e=[""];switch(t){case"mobile":e.unshift("_mobile");case"tablet":e.unshift("_tablet");case"desktop":e.unshift("_desktop")}const i=[];return["animation","_animation"].forEach(t=>{e.forEach(e=>{i.push(t+e)})}),i}_removeAnimationSettings(t,e){this._listAnimationSettingsKeys().forEach(t=>delete e[t]),t.dataset.settings=JSON.stringify(e)}static run(){const t=new RocketElementorAnimation;requestAnimationFrame(t._detectAnimations.bind(t))}}document.addEventListener("DOMContentLoaded",RocketElementorAnimation.run);</script>
 <span id=elementor-device-mode-wpr class=elementor-screen-only></span><span id=elementor-device-mode class=elementor-screen-only></span><div id=goog-gt-tt class="VIpgJd-yAWNEb-L7lbkb skiptranslate sf-hidden" style='border-radius:12px;margin:0 0 0-23px;padding:0;font-family:"Google Sans",Arial,sans-serif' data-id></div><div class="widget_shopping_cart_live_region screen-reader-text" role=status></div>
