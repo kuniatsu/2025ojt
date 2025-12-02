@@ -71,6 +71,55 @@ body, html {
   width: 100%;
   max-width: 100%;
 }
+
+/* スライダーのレスポンシブ対応 */
+.farmart-slides {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.farmart-slides .slick-track {
+  display: flex !important;
+  width: 100% !important;
+}
+
+.farmart-slides .slick-slide {
+  width: 100% !important;
+  height: auto !important;
+  float: none !important;
+}
+
+.farmart-slides .slick-list {
+  width: 100% !important;
+  overflow: hidden !important;
+}
+
+.slick-slide-inner,
+.slick-slide-bg {
+  width: 100% !important;
+  height: auto !important;
+}
+
+/* アロー（矢印）のスタイル調整 */
+.farmart-slides .slick-arrow {
+  z-index: 10;
+  cursor: pointer;
+}
+
+.farmart-slides .slick-prev-arrow {
+  left: 20px;
+}
+
+.farmart-slides .slick-next-arrow {
+  right: 20px;
+}
+
+/* ドット（ページネーション）の表示 */
+.farmart-slides .slick-dots {
+  display: block !important;
+  position: relative;
+  bottom: 20px;
+}
 </style>
 <link rel=stylesheet id=photoswipe-default-skin-css href=stylesheet_6.css type=text/css>
 <link data-minify=1 rel=stylesheet id=elementor-gf-local-montserrat-css href=stylesheet_5.css type=text/css>
@@ -560,5 +609,67 @@ var isures_sdc_vars = {"url_ajax":"https:\/\/suadalat.com\/wp-admin\/admin-ajax.
  
  
 <script src=data:text/javascript;base64,CmlmKCAvQW5kcm9pZHx3ZWJPU3xpUGhvbmV8aVBhZHxpUG9kfEJsYWNrQmVycnl8SUVNb2JpbGV8T3BlcmEgTWluaS9pLnRlc3QobmF2aWdhdG9yLnVzZXJBZ2VudCkgKQp7ZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoImxpbmt6YWxvIikuaHJlZj0iaHR0cHM6Ly96YWxvLm1lLzA5MDE3Nzg3NzUiO30K data-rocket-status=executed></script>
+<script>
+// スライダーの再初期化スクリプト
+(function() {
+  function initSlider() {
+    // jQueryとslickが読み込まれるまで待機
+    if (typeof jQuery === 'undefined' || typeof jQuery.fn.slick === 'undefined') {
+      setTimeout(initSlider, 100);
+      return;
+    }
+
+    jQuery(document).ready(function($) {
+      // 既存のスライダーを破棄して再初期化
+      var $slider = $('.farmart-slides');
+
+      if ($slider.length > 0 && $slider.hasClass('slick-initialized')) {
+        // 既存のスライダーを破棄
+        $slider.slick('unslick');
+      }
+
+      // スライダーを再初期化
+      if ($slider.length > 0) {
+        var options = $slider.data('slider_options') || {
+          slidesToShow: 1,
+          autoplaySpeed: 3000,
+          autoplay: true,
+          infinite: true,
+          pauseOnHover: true,
+          speed: 500,
+          arrows: true,
+          dots: true,
+          rtl: false,
+          fade: true,
+          adaptiveHeight: true
+        };
+
+        $slider.slick(options);
+
+        // ウィンドウリサイズ時に再初期化
+        var resizeTimer;
+        $(window).on('resize', function() {
+          clearTimeout(resizeTimer);
+          resizeTimer = setTimeout(function() {
+            if ($slider.hasClass('slick-initialized')) {
+              $slider.slick('setPosition');
+            }
+          }, 250);
+        });
+      }
+    });
+  }
+
+  // ページ読み込み後に実行
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSlider);
+  } else {
+    initSlider();
+  }
+
+  // Rocket LazyLoad対応
+  window.addEventListener('rocket-allScriptsLoaded', initSlider);
+})();
+</script>
 <script>class RocketElementorAnimation{constructor(){this.deviceMode=document.createElement("span"),this.deviceMode.id="elementor-device-mode-wpr",this.deviceMode.setAttribute("class","elementor-screen-only"),document.body.appendChild(this.deviceMode)}_detectAnimations(){let t=getComputedStyle(this.deviceMode,":after").content.replace(/"/g,"");this.animationSettingKeys=this._listAnimationSettingsKeys(t),document.querySelectorAll(".elementor-invisible[data-settings]").forEach(t=>{const e=t.getBoundingClientRect();if(e.bottom>=0&&e.top<=window.innerHeight)try{this._animateElement(t)}catch(t){}})}_animateElement(t){const e=JSON.parse(t.dataset.settings),i=e._animation_delay||e.animation_delay||0,n=e[this.animationSettingKeys.find(t=>e[t])];if("none"===n)return void t.classList.remove("elementor-invisible");t.classList.remove(n),this.currentAnimation&&t.classList.remove(this.currentAnimation),this.currentAnimation=n;let s=setTimeout(()=>{t.classList.remove("elementor-invisible"),t.classList.add("animated",n),this._removeAnimationSettings(t,e)},i);window.addEventListener("rocket-startLoading",function(){clearTimeout(s)})}_listAnimationSettingsKeys(t="mobile"){const e=[""];switch(t){case"mobile":e.unshift("_mobile");case"tablet":e.unshift("_tablet");case"desktop":e.unshift("_desktop")}const i=[];return["animation","_animation"].forEach(t=>{e.forEach(e=>{i.push(t+e)})}),i}_removeAnimationSettings(t,e){this._listAnimationSettingsKeys().forEach(t=>delete e[t]),t.dataset.settings=JSON.stringify(e)}static run(){const t=new RocketElementorAnimation;requestAnimationFrame(t._detectAnimations.bind(t))}}document.addEventListener("DOMContentLoaded",RocketElementorAnimation.run);</script>
 <span id=elementor-device-mode-wpr class=elementor-screen-only></span><span id=elementor-device-mode class=elementor-screen-only></span><div id=goog-gt-tt class="VIpgJd-yAWNEb-L7lbkb skiptranslate sf-hidden" style='border-radius:12px;margin:0 0 0-23px;padding:0;font-family:"Google Sans",Arial,sans-serif' data-id></div><div class="widget_shopping_cart_live_region screen-reader-text" role=status></div>
