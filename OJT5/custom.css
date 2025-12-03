@@ -74,6 +74,43 @@ body, html {
   bottom: 20px;
 }
 
+/* ダラット説明文セクション */
+.dalat-description {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto 30px auto;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.description-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #115489;
+  text-align: center;
+  margin: 0 0 25px 0;
+  line-height: 1.4;
+  padding-bottom: 15px;
+  border-bottom: 3px solid #26c4fc;
+}
+
+.description-content {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #333;
+  text-align: justify;
+}
+
+.description-content p {
+  margin: 0 0 15px 0;
+  text-indent: 1em;
+}
+
+.description-content p:last-child {
+  margin-bottom: 0;
+}
+
 /* カスタムスライダーのスタイル */
 .custom-slider-container {
   position: relative;
@@ -227,6 +264,27 @@ body, html {
 
 /* レスポンシブ対応 */
 @media (max-width: 768px) {
+  /* 説明文のモバイル対応 */
+  .dalat-description {
+    padding: 25px 15px;
+    margin: 0 auto 20px auto;
+  }
+
+  .description-title {
+    font-size: 1.3rem;
+    margin: 0 0 15px 0;
+    padding-bottom: 10px;
+  }
+
+  .description-content {
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  .description-content p {
+    margin: 0 0 12px 0;
+  }
+
   .custom-slider-container {
     height: 350px;
   }
@@ -407,6 +465,27 @@ body, html {
 }
 
 @media (max-width: 480px) {
+  /* 説明文のさらなる小型画面対応 */
+  .dalat-description {
+    padding: 20px 12px;
+    margin: 0 auto 15px auto;
+  }
+
+  .description-title {
+    font-size: 1.1rem;
+    margin: 0 0 12px 0;
+  }
+
+  .description-content {
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+
+  .description-content p {
+    margin: 0 0 10px 0;
+    text-indent: 0.5em;
+  }
+
   .custom-slider-container {
     height: 250px;
   }
