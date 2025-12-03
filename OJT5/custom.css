@@ -245,6 +245,63 @@ body, html {
     width: 20px;
     height: 20px;
   }
+
+  /* ヘッダーのモバイル対応 */
+  .site-header {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .header-main,
+  .header-bottom {
+    display: block !important;
+  }
+
+  .header-container {
+    padding: 10px 15px;
+  }
+
+  .header-wrapper {
+    flex-direction: column;
+  }
+
+  .header-items {
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+
+  .site-branding {
+    text-align: center;
+  }
+
+  .site-branding svg {
+    width: 120px !important;
+    height: auto !important;
+  }
+
+  .main-navigation ul {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .main-navigation ul li {
+    display: block;
+    width: 100%;
+  }
+
+  /* sf-hidden クラスを上書き */
+  .sf-hidden {
+    display: none !important;
+  }
+
+  /* デスクトップヘッダーをモバイルでも表示 */
+  .header-main .header-items--left,
+  .header-main .header-items--center,
+  .header-main .header-items--right {
+    display: block !important;
+  }
 }
 
 @media (max-width: 480px) {
@@ -273,5 +330,24 @@ body, html {
   .dot {
     width: 10px;
     height: 10px;
+  }
+
+  /* ヘッダーのさらなる最適化 */
+  .site-branding svg {
+    width: 100px !important;
+  }
+
+  .header-container {
+    padding: 8px 10px;
+  }
+
+  .main-navigation ul li a {
+    font-size: 0.9rem;
+    padding: 8px 10px;
+  }
+
+  .site-title,
+  .site-description {
+    font-size: 0.85rem;
   }
 }
