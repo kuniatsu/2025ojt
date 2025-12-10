@@ -138,5 +138,3 @@
     window.addEventListener('rocket-allScriptsLoaded', initCustomSlider);
   }
 })();
-
-
